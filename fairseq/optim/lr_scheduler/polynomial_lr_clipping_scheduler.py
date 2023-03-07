@@ -87,7 +87,7 @@ class PolynomialLRClippingScheduler(FairseqLRScheduler):
         self.optimizer.set_lr(lr)
 
         # Gradient clipping
-        max_norm = self.cfg.max_norm
+        max_norm = self.cfg.max_grad_norm
         if max_norm is not None and max_norm > 0:
             params = self.optimizer.get_model().parameters()
             torch.nn.utils.clip_grad_norm_(params, max_norm)
